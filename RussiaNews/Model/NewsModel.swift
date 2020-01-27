@@ -105,6 +105,23 @@ class NewsModel {
             }
         }
     }
+    
+    func getArticlesCategory(by category: String) {
+        request(urlStrTopHeadlines, method: .get, parameters: ["pageSize":"10", "category":category ,"apiKey": apiKey], headers: nil).responseJSON { (response) in
+            guard let data = response.data else {return}
+            do {
+                let json = try JSON(data: data)
+                guard let articles = json["articles"].array else {return}
+                self.articles = articles
+                DispatchQueue.main.async {
+                    self.delegate.updateNews()
+                }
+            } catch {
+                
+            }
+        }
+    }
+    
     func getArticlesTopHeadlines() {
         request(urlStrTopHeadlines, method: .get, parameters: ["pageSize":"10", "apiKey": apiKey], headers: nil).responseJSON { (response) in
             guard let data = response.data else {return}
@@ -161,7 +178,6 @@ class NewsModel {
         self._datePublished = datePublished
         
         let newsModel = NewsModel()
-        newsModel._author = author
         newsModel._title = title
         newsModel._description = description
         newsModel._sourceUrl = sourceUrl
