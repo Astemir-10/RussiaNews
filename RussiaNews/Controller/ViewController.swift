@@ -30,6 +30,8 @@ class ViewController: UIViewController {
         return tableView
     }()
     
+    // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -45,11 +47,16 @@ class ViewController: UIViewController {
         addCollectionView()
         addTableView()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        //navigationController?.navigationBar.prefersLargeTitles = true
-        //navigationItem.title = "Новости"
+        navigationItem.title = "Главное"
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: nil)
+        barButtonItem.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        navigationItem.rightBarButtonItem = barButtonItem
+
         
-        let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "CloseIcon"), style: .done, target: nil, action: nil)
-        navigationItem.leftBarButtonItem = barButtonItem
+        let barButtonItem_2 = UIBarButtonItem(title: "RussiaNews", style: .done, target: self, action: nil)
+        barButtonItem_2.tintColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
+        navigationItem.leftBarButtonItem = barButtonItem_2
+
     }
     
     func addTableView() {
@@ -137,25 +144,39 @@ extension ViewController: NewsModelDelegate, UITableViewDelegate, UITableViewDat
         switch indexPath.row {
         case 0:
             newsModel.articlesDownloads.removeAll()
+            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "general")
+            navigationItem.title = "Главное"
         case 1:
             newsModel.articlesDownloads.removeAll()
+            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "health")
+            navigationItem.title = "Здоровье"
         case 2:
             newsModel.articlesDownloads.removeAll()
+            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "business")
+            navigationItem.title = "Бизнес"
         case 3:
             newsModel.articlesDownloads.removeAll()
+            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "science")
+            navigationItem.title = "Наука"
         case 4:
             newsModel.articlesDownloads.removeAll()
+            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "sports")
+            navigationItem.title = "Спорт"
         case 5:
             newsModel.articlesDownloads.removeAll()
+            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "technology")
+            navigationItem.title = "Технологии"
         case 6:
             newsModel.articlesDownloads.removeAll()
+            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "entertainment")
+            navigationItem.title = "Развлечения"
         default:
             break
         }
@@ -178,6 +199,8 @@ extension ViewController: NewsModelDelegate, UITableViewDelegate, UITableViewDat
                 newsModel.downloadImage(link: url) { (image) in
                     cell.newsImage.image = image
                 }
+            } else {
+                cell.newsImage.image = #imageLiteral(resourceName: "noImage")
             }
             cell.titleLable.text = newsModel.title
         }

@@ -2,7 +2,7 @@
 //  TabBarController.swift
 //  RussiaNews
 //
-//  Created by Astemir Shibzuhov on 25.01.2020.
+//  Created by Astemir Shibzuhov on 28.01.2020.
 //  Copyright © 2020 Astemir Shibzuhov. All rights reserved.
 //
 
@@ -18,26 +18,29 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "CloseIcon"), tag: 1)
-        tabBarItem.badgeColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        tabBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        tabBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        tabBar.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
-        let searchBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "CloseIcon"), tag: 1)
-        tabBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
-        let settingBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "CloseIcon"), tag: 1)
+        
+        let tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "home"), tag: 1)
+
+        let searchBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "search"), tag: 1)
+
+        let settingBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "settings"), tag: 1)
         
         navigationControllerNewsFeed.tabBarItem = tabBarItem
         navigationControllerSearch.tabBarItem = searchBarItem
         navigationControllerSetting.tabBarItem = settingBarItem
-        tabBarController?.tabBar.barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        tabBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         
             
         setViewControllers([navigationControllerNewsFeed, navigationControllerSearch, navigationControllerSetting], animated: true)
         selectedViewController = navigationControllerNewsFeed
         
-        tabBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
 
         // Do any additional setup after loading the view.
     }
