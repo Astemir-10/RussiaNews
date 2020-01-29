@@ -15,8 +15,9 @@ class NewsCategory: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = 8
-        viewFromCell.backgroundColor = #colorLiteral(red: 0.7833376527, green: 0.08321542293, blue: 0.2302843928, alpha: 1)
+        viewFromCell.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         clipsToBounds = true
+        
     }
 
 }

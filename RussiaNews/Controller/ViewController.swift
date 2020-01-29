@@ -17,14 +17,15 @@ class ViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
+        collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return collectionView
     }()
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
-        tableView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        tableView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -64,7 +65,7 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
         tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant:  10).isActive = true
+        tableView.topAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
@@ -72,16 +73,25 @@ class ViewController: UIViewController {
         collectionView.register(UINib(nibName: "NewsCategory", bundle: nil), forCellWithReuseIdentifier: "Cell")
         view.addSubview(collectionView)
         collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 10).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 35).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
+    
+    @objc func saveArticle(_ sender: UIButton) {
+        print(newsModel.articlesDownloads[sender.tag].title)
+        if sender.imageView?.image ==  #imageLiteral(resourceName: "bookmark"){
+            sender.setImage(#imageLiteral(resourceName: "bookmarkRed"), for: .normal)
+        } else {
+            sender.setImage(#imageLiteral(resourceName: "bookmark"), for: .normal)
+        }
+    }
+ 
 }
 
 extension ViewController: NewsModelDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
     // MARK: - CollectionViewDelegate
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
     }
@@ -91,24 +101,25 @@ extension ViewController: NewsModelDelegate, UITableViewDelegate, UITableViewDat
         switch indexPath.row {
         case 0:
             cell.textLabel.text = "Главное"
+            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         case 1:
             cell.textLabel.text = "Здоровье"
-            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.01907301135, green: 0.6954192519, blue: 0.3252737522, alpha: 1)
+            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         case 2:
             cell.textLabel.text = "Бизнес"
-            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.3065021038, green: 0.3481286466, blue: 0.9621635079, alpha: 1)
+            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         case 3:
             cell.textLabel.text = "Наука"
-            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.76403898, green: 0.4585318565, blue: 0.2334323823, alpha: 1)
+            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         case 4:
             cell.textLabel.text = "Спорт"
-            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.619731009, green: 0.2137993276, blue: 0.5975114107, alpha: 1)
+            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         case 5:
             cell.textLabel.text = "Техналогии"
-            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.6607651114, green: 0.6064379811, blue: 0, alpha: 1)
+            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         case 6:
             cell.textLabel.text = "Развлечения"
-            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+            cell.viewFromCell.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         default:
             break
         }
@@ -122,21 +133,21 @@ extension ViewController: NewsModelDelegate, UITableViewDelegate, UITableViewDat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
         case 0:
-            return CGSize(width: 90, height: 45)
+            return CGSize(width: 90, height: 30)
         case 1:
-            return CGSize(width: 100, height: 45)
+            return CGSize(width: 100, height: 30)
         case 2:
-            return CGSize(width: 75, height: 45)
+            return CGSize(width: 75, height: 30)
         case 3:
-            return CGSize(width: 70, height: 45)
+            return CGSize(width: 70, height: 30)
         case 4:
-            return CGSize(width: 70, height: 45)
+            return CGSize(width: 70, height: 30)
         case 5:
-            return CGSize(width: 120, height: 45)
+            return CGSize(width: 120, height: 30)
         default:
             break
         }
-        return CGSize(width: 130, height: 45)
+        return CGSize(width: 130, height: 30)
     }
     
     
@@ -144,37 +155,31 @@ extension ViewController: NewsModelDelegate, UITableViewDelegate, UITableViewDat
         switch indexPath.row {
         case 0:
             newsModel.articlesDownloads.removeAll()
-            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "general")
             navigationItem.title = "Главное"
+
         case 1:
             newsModel.articlesDownloads.removeAll()
-            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "health")
             navigationItem.title = "Здоровье"
         case 2:
             newsModel.articlesDownloads.removeAll()
-            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "business")
             navigationItem.title = "Бизнес"
         case 3:
             newsModel.articlesDownloads.removeAll()
-            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "science")
             navigationItem.title = "Наука"
         case 4:
             newsModel.articlesDownloads.removeAll()
-            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "sports")
             navigationItem.title = "Спорт"
         case 5:
             newsModel.articlesDownloads.removeAll()
-            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "technology")
             navigationItem.title = "Технологии"
         case 6:
             newsModel.articlesDownloads.removeAll()
-            newsModel.articles?.removeAll()
             newsModel.getArticlesCategory(by: "entertainment")
             navigationItem.title = "Развлечения"
         default:
@@ -203,6 +208,10 @@ extension ViewController: NewsModelDelegate, UITableViewDelegate, UITableViewDat
                 cell.newsImage.image = #imageLiteral(resourceName: "noImage")
             }
             cell.titleLable.text = newsModel.title
+            cell.dateLabel.text = newsModel.datePublished
+            cell.saveButton.tag = indexPath.row
+            cell.saveButton.addTarget(self, action: #selector(saveArticle(_:)), for: .touchUpInside)
+            
         }
         return cell
     }
@@ -211,11 +220,16 @@ extension ViewController: NewsModelDelegate, UITableViewDelegate, UITableViewDat
         let openArticleVC = OpenArticleLinkWeb()
         openArticleVC.url = newsModel.articlesDownloads[indexPath.row].sourceUrl
         present(openArticleVC, animated: true, completion: nil)
-              
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220.0
+        return 230.0
+    }
+    
+    func scrollToRow(at indexPath: IndexPath, at scrollPosition: UITableView.ScrollPosition, animated: Bool) {
+        if scrollPosition == .middle {
+            collectionView.isHidden = true
+        }
     }
         
     // MARK: - NewsModelDelegate

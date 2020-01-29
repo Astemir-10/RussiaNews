@@ -9,8 +9,6 @@
 import UIKit
 
 class SearchNewsViewController: UIViewController {
-   
-    
     
     let newsModel = NewsModel()
     
@@ -25,19 +23,21 @@ class SearchNewsViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-         navigationItem.title = "Поиск"
+        
+        view.showsLargeContentViewer = true
+        navigationItem.title = "Поиск"
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         searchBar.delegate = self
         addSearchBar()
+        
         newsModel.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         addTableView()
-        // Do any additional setup after loading the view.
     }
     
     private func addSearchBar() {
@@ -54,16 +54,12 @@ class SearchNewsViewController: UIViewController {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
     }
-    
- 
-    
-    
-    
+
 }
 
-extension SearchNewsViewController: UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, NewsModelDelegate  {
+extension SearchNewsViewController: UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, NewsModelDelegate {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if newsModel.articles == nil {
             return 0
@@ -74,6 +70,7 @@ extension SearchNewsViewController: UISearchBarDelegate, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NewsCell
+
         if newsModel.articles != nil {
             newsModel.getArticle(at: indexPath.row)
             if let url =  newsModel.imageUrl {
@@ -84,6 +81,7 @@ extension SearchNewsViewController: UISearchBarDelegate, UITableViewDelegate, UI
                 cell.newsImage.image = #imageLiteral(resourceName: "noImage")
             }
             cell.titleLable.text = newsModel.title
+            cell.dateLabel.text = newsModel.datePublished
         }
         return cell
     }
@@ -107,9 +105,7 @@ extension SearchNewsViewController: UISearchBarDelegate, UITableViewDelegate, UI
         return 220.0
     }
     
-    
     func updateNews() {
         tableView.reloadData()
     }
-
 }

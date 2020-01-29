@@ -26,7 +26,7 @@ class NewsModel {
 
     
     
-    
+    private let dateInstrument = DateInstrument()
     
     private var _title: String?
     private var _totalResult: Int?
@@ -175,7 +175,8 @@ class NewsModel {
         self._imageUrl = imageUrl
 
         guard let datePublished = article["publishedAt"].string else {return}
-        self._datePublished = datePublished
+        let datePublishedNormal = dateInstrument.dateConverter(articleDate: datePublished)
+        self._datePublished = datePublishedNormal
         
         let newsModel = NewsModel()
         newsModel._title = title
