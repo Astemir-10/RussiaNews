@@ -57,6 +57,9 @@ class ViewController: UIViewController {
         let barButtonItem_2 = UIBarButtonItem(title: "RussiaNews", style: .done, target: self, action: nil)
         barButtonItem_2.tintColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
         navigationItem.leftBarButtonItem = barButtonItem_2
+        
+        // MARK: - Test Database
+        
 
     }
     
@@ -85,6 +88,7 @@ class ViewController: UIViewController {
         } else {
             sender.setImage(#imageLiteral(resourceName: "bookmark"), for: .normal)
         }
+        
     }
  
 }

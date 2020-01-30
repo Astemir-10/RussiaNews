@@ -58,7 +58,6 @@ class SearchNewsViewController: UIViewController {
     }
     
     @objc func saveArticle(_ sender: UIButton) {
-        print(newsModel.articlesDownloads[sender.tag].title)
         if sender.imageView?.image ==  #imageLiteral(resourceName: "bookmark"){
             sender.setImage(#imageLiteral(resourceName: "bookmarkRed"), for: .normal)
         } else {

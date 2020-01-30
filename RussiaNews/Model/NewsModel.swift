@@ -24,7 +24,7 @@ class NewsModel {
     var articles:[JSON]?
     var articlesDownloads:[NewsModel] = [NewsModel]()
 
-    
+    var numberOfViewrs = 0
     
     private let dateInstrument = DateInstrument()
     
@@ -185,7 +185,5 @@ class NewsModel {
         newsModel._imageUrl = imageUrl
         newsModel._datePublished = datePublished
         self.articlesDownloads.append(newsModel)
-        
-        
     }
 }
