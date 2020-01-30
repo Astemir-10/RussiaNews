@@ -210,6 +210,7 @@ extension ViewController: NewsModelDelegate, UITableViewDelegate, UITableViewDat
             cell.titleLable.text = newsModel.title
             cell.dateLabel.text = newsModel.datePublished
             cell.saveButton.tag = indexPath.row
+            cell.saveButton.setImage(#imageLiteral(resourceName: "bookmark"), for: .normal)
             cell.saveButton.addTarget(self, action: #selector(saveArticle(_:)), for: .touchUpInside)
             
         }

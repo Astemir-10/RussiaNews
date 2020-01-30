@@ -38,6 +38,7 @@ class SearchNewsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         addTableView()
+        newsModel.getArticlesTopHeadlines()
     }
     
     private func addSearchBar() {
@@ -54,6 +55,15 @@ class SearchNewsViewController: UIViewController {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    @objc func saveArticle(_ sender: UIButton) {
+        print(newsModel.articlesDownloads[sender.tag].title)
+        if sender.imageView?.image ==  #imageLiteral(resourceName: "bookmark"){
+            sender.setImage(#imageLiteral(resourceName: "bookmarkRed"), for: .normal)
+        } else {
+            sender.setImage(#imageLiteral(resourceName: "bookmark"), for: .normal)
+        }
     }
 
 }
@@ -82,6 +92,8 @@ extension SearchNewsViewController: UISearchBarDelegate, UITableViewDelegate, UI
             }
             cell.titleLable.text = newsModel.title
             cell.dateLabel.text = newsModel.datePublished
+            cell.saveButton.tag = indexPath.row
+            cell.saveButton.addTarget(self, action: #selector(saveArticle(_:)), for: .touchUpInside)
         }
         return cell
     }

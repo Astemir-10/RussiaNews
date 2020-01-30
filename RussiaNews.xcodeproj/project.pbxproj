@@ -36,6 +36,8 @@
 		E2A28C4923E0D95F00BD175F /* DateInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A28C4823E0D95F00BD175F /* DateInstrument.swift */; };
 		E2C0A03D23DB49040023D13E /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C0A03B23DB49040023D13E /* NewsCell.swift */; };
 		E2C0A03E23DB49040023D13E /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C0A03C23DB49040023D13E /* NewsCell.xib */; };
+		E2F448C023E38107003BAD9A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F448BF23E38107003BAD9A /* DatabaseManager.swift */; };
+		E2F448C223E3810F003BAD9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2F448C123E3810F003BAD9A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		E2A28C4823E0D95F00BD175F /* DateInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInstrument.swift; sourceTree = "<group>"; };
 		E2C0A03B23DB49040023D13E /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		E2C0A03C23DB49040023D13E /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		E2F448BF23E38107003BAD9A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		E2F448C123E3810F003BAD9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC76277ACD985A049073BFF7 /* Pods-RussiaNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RussiaNews.debug.xcconfig"; path = "Target Support Files/Pods-RussiaNews/Pods-RussiaNews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				E27C282823DAFD2B00D52AC8 /* NewsModel.swift */,
+				E2F448BF23E38107003BAD9A /* DatabaseManager.swift */,
 				E2A28C4823E0D95F00BD175F /* DateInstrument.swift */,
 			);
 			path = Model;
@@ -165,6 +170,7 @@
 				E2A28C2523DE342600BD175F /* Fonts */,
 				E24ACB6523DC7FF2001B7917 /* Model */,
 				E27C282223DAFB8C00D52AC8 /* Info.plist */,
+				E2F448C123E3810F003BAD9A /* GoogleService-Info.plist */,
 				E2A28C2123DC9F9600BD175F /* Assets.xcassets */,
 			);
 			path = RussiaNews;
@@ -264,6 +270,7 @@
 				E2A28C3B23DE34A800BD175F /* SF-Compact-Display-Semibold.otf in Resources */,
 				E2A28C3423DE34A800BD175F /* SF-Pro-Text-Regular.otf in Resources */,
 				E2A28C3823DE34A800BD175F /* SF-Compact-Text-Regular.otf in Resources */,
+				E2F448C223E3810F003BAD9A /* GoogleService-Info.plist in Resources */,
 				E2A28C3623DE34A800BD175F /* SF-Compact-Text-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +326,7 @@
 			files = (
 				E27C282923DAFD2B00D52AC8 /* NewsModel.swift in Sources */,
 				E2A28C4423DEEF2500BD175F /* NewsCategory.swift in Sources */,
+				E2F448C023E38107003BAD9A /* DatabaseManager.swift in Sources */,
 				E2A28C4723E00A1000BD175F /* TabBarController.swift in Sources */,
 				E27C281923DAFB8700D52AC8 /* ViewController.swift in Sources */,
 				E27C281523DAFB8700D52AC8 /* AppDelegate.swift in Sources */,

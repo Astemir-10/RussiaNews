@@ -42,7 +42,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vuc-0Q-LVp">
-                                <rect key="frame" x="368" y="5" width="20" height="21"/>
+                                <rect key="frame" x="371" y="5" width="17" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="IIB-Gm-3NP"/>
+                                    <constraint firstAttribute="width" constant="17" id="d4g-61-aHW"/>
+                                </constraints>
                                 <state key="normal" title="+" image="bookmark"/>
                             </button>
                         </subviews>
@@ -85,7 +89,6 @@
                     <constraint firstItem="pGn-bk-OJB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="0we-X0-txk"/>
                     <constraint firstAttribute="trailing" secondItem="mPm-KJ-oxt" secondAttribute="trailing" constant="18" id="1mw-29-Dhf"/>
                     <constraint firstItem="Nzb-uz-86K" firstAttribute="top" secondItem="mPm-KJ-oxt" secondAttribute="bottom" constant="8" id="4KQ-bY-5Ei"/>
-                    <constraint firstAttribute="bottom" secondItem="Vuc-0Q-LVp" secondAttribute="bottom" constant="175" id="85e-X4-mtG"/>
                     <constraint firstItem="ZaV-1q-h85" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uGx-e6-vng" secondAttribute="trailing" constant="100" id="8OO-1m-Jx1"/>
                     <constraint firstAttribute="bottom" secondItem="pGn-bk-OJB" secondAttribute="bottom" constant="5" id="Akd-S7-Zji"/>
                     <constraint firstItem="mPm-KJ-oxt" firstAttribute="leading" secondItem="ZaV-1q-h85" secondAttribute="trailing" constant="8" id="DAf-rP-luU"/>
@@ -99,7 +102,6 @@
                     <constraint firstItem="uGx-e6-vng" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Z49-4H-asN"/>
                     <constraint firstItem="Nzb-uz-86K" firstAttribute="top" secondItem="ZaV-1q-h85" secondAttribute="bottom" constant="3" id="cf9-ZE-4GJ"/>
                     <constraint firstItem="pGn-bk-OJB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="m8t-YT-9rF"/>
-                    <constraint firstItem="Vuc-0Q-LVp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="378" id="qhA-dv-FPG"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -111,7 +113,7 @@
                 <outlet property="saveButton" destination="Vuc-0Q-LVp" id="jOU-ZQ-Cij"/>
                 <outlet property="titleLable" destination="t7d-l4-PHY" id="Msa-jL-xY0"/>
             </connections>
-            <point key="canvasLocation" x="291" y="83"/>
+            <point key="canvasLocation" x="289.85507246376812" y="82.03125"/>
         </tableViewCell>
     </objects>
     <resources>
